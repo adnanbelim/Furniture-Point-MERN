@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Prata&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Prata&display=swap');
+@font-face {
+    font-family: 'CustomFont';
+    src: url('./fonts/Cilager.ttf') format('truetype');
+}
+
+:root{
+    --btn-bg: #2f0e07;
+    --box-bg: #b88b4a;
+    --primary-font: 'CustomFont', sans-serif;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Navbar */
+
+a.active hr {
+    display: block;
+}
+
+@media screen and (max-width:640px) {
+    a.active {
+        background-color: black;
+        color: white;
+    }
+}
+
+/* font */
+
+* {
+    font-family: Outfit;
+    padding: 0;
+    margin: 0;
+}
+
+.prata-regular {
+    font-family: 'Prata', serif;
+}
+
+h1 {
+    font-family: "Prata", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.Cilager{
+    font-family: var(--primary-font);
+    letter-spacing: 2px;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* Customise classes */
+
+.btn-bg {
+    background: var(--btn-bg);
+}
+
+.box-bg {
+    background-color: var(--box-bg);
+}
+
+/* All background images */
+
+.ad-bg{
+    background: url('./assets/about_img1.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.bg-letter{
+    background: url('./assets/FurnitureBg1.png');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Check box css */
+
+.custom-checkbox {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+}
+
+.custom-checkbox:checked {
+    background-color: #b88b4a;
+}
+
+.custom-checkbox:checked::after {
+    content: "✔";
+    color: white;
+    font-size: 14px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

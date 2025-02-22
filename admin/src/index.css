@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700&display=swap');
+@font-face {
+    font-family: 'CustomFont';
+    src: url('./fonts/Cilager.ttf') format('truetype');
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --btn-bg: #2f0e07;
+    --box-bg: #b88b4a;
+}
+
+.btn-bg{
+    background: var(--btn-bg);
+}
+
+*{
+    font-family: Outfit;
+}
+
+.active{
+    background-color: #ffebf5;
+    border-color: #C586A5;
+}
+
+.Cilager{
+    font-family: CustomFont, sans-serif;
+    letter-spacing: 2px;
+}
