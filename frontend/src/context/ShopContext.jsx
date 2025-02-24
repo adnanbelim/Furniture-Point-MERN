@@ -37,6 +37,14 @@ const ShopContextProvider = (props) => {
     //All user data
     const [allUserData, setAllUserData] = useState([]);
 
+    // Now login page will not open on click or reload of page if token is available
+    useEffect(() => {
+        if (!token && localStorage.getItem('token')) {
+            getUserCart(localStorage.getItem('token'));
+        }
+    }, [])
+
+
     const addToCart = async (itemId, size) => {
 
         if (!size) {
@@ -197,21 +205,37 @@ const ShopContextProvider = (props) => {
         getCategoryData();
     }, []);
 
-    useEffect((token) => {
+    // Initialize token and userId from localStorage
+    useEffect(() => {
+        const storedToken = localStorage.getItem("token");
+        const storedUserId = localStorage.getItem("id");
+
+        if (storedToken) setToken(storedToken);
+        if (storedUserId) setUserId(storedUserId);
+    }, []); // Runs only once when the component mounts
+
+    useEffect(() => {
         const fetchUser = async () => {
             try {
-                if (token) {
-                    const response = await axios.get(`${backendUrl}/api/user/fetchuser/${userId}`, { headers: { token } });
-                    // console.log(response.data.user);
-                    setUserData(response.data.user)
-                }
+                const storedToken = localStorage.getItem("token");
+                const storedUserId = localStorage.getItem("id"); // Ensure this is the actual user ID, not a token
+
+                if (!storedToken || !storedUserId) return;
+
+                const response = await axios.get(`${backendUrl}/api/user/fetchuser/${storedUserId}`, {
+                    headers: { token: storedToken },
+                });
+
+                setUserData(response.data.user);
             } catch (error) {
                 console.log(error);
                 toast.error(error.message);
             }
-        }
-        fetchUser();
-    }, [userId]);
+        };
+
+        fetchUser(); // Fetch user details when component mounts
+    }, []);
+
 
     const fetchAllUser = async () => {
         try {
@@ -227,15 +251,6 @@ const ShopContextProvider = (props) => {
     useEffect(() => {
         fetchAllUser();
     }, []);
-
-    // Now login page will not open on click or reload of page if token is available
-    useEffect(() => {
-        if (!token && localStorage.getItem('token')) {
-            setToken(localStorage.getItem('token'));
-            setUserId(localStorage.getItem('id'));
-            getUserCart(localStorage.getItem('token'));
-        }
-    }, [])
 
 
     // We can access the any variable of value obj using the context API
