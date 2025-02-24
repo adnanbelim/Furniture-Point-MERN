@@ -10,6 +10,7 @@ const Navbar = () => {
     const logout = () => {
         navigate('/login');
         localStorage.removeItem('token');
+        localStorage.removeItem('id');
         setToken('');
         setCartItems({});
     }
