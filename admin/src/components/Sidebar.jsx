@@ -15,7 +15,7 @@ function Sidebar() {
                     <p className="hidden md:block">List SubCategory</p>
                 </NavLink>
                 <NavLink to='/addCategory' className='flex items-center gap-3 border border-gray-300 border-r-0 px-3 py-2 rounded-1'>
-                    <img src={assets.order_icon} alt="" className='w-5 h-5' />
+                    <img src={assets.add_icon} alt="" className='w-5 h-5' />
                     <p className="hidden md:block">Add Category</p>
                 </NavLink>
                 <NavLink to='/listCategory' className='flex items-center gap-3 border border-gray-300 border-r-0 px-3 py-2 rounded-1'>
