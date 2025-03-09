@@ -10,7 +10,7 @@ export const ShopContext = createContext();
 const ShopContextProvider = (props) => {
 
     // We can change variable value that effect on entire page (creation of global variable)
-    const currency = '$';
+    const currency = '₹';
     const delivery_fee = 10;
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
     // console.log('backendUrl ', backendUrl);
